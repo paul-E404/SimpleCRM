@@ -4,22 +4,29 @@
       PLATZ FÜR LOGO
     </div>
     <ul class="menu-items">
-      <li><mat-icon>dashboard</mat-icon>Dashboard</li>
-      <li><mat-icon>person_outline</mat-icon>User</li>
+      <li routerLink="/">
+        <mat-icon>dashboard</mat-icon>Dashboard
+      </li>
+      <li routerLink="/user">
+        <mat-icon>person_outline</mat-icon>User
+      </li>
     </ul>
   </mat-drawer>
 
   <div class="example-sidenav-content">
 
     <mat-toolbar color="primary">
-      <button (click)="drawer.toggle();menuOpened = !menuOpened" mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon">
+      <button (click)="drawer.toggle();menuOpened = !menuOpened" mat-icon-button>
         <mat-icon *ngIf="!menuOpened">menu</mat-icon>
         <mat-icon *ngIf="menuOpened">menu_open</mat-icon>
       </button>
       <span>Simple CRM</span>
       <span class="example-spacer"></span>
     </mat-toolbar>
+
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
 
   </div>
 
