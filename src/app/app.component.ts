@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'simple-crm';
+
+  menuOpened: boolean = false;
+
+  ngOnInit() {
+  
+  }
 }
