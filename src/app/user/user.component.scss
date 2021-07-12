@@ -3,3 +3,40 @@
     bottom: var(--offset-main);
     right: var(--offset-main);
 }
+
+mat-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table {
+    border-collapse: collapse;
+
+    th {
+        text-align: start;
+    }
+
+    td {
+        height: 40px;
+    }
+
+    th,
+    td {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        &:first-child {
+            padding-left: var(--padding-main);
+        }
+
+        &:last-child {
+            padding-right: var(--padding-main);
+        }
+    }
+
+    tbody tr {
+        &:hover {
+            background-color: var(--color-hover);
+            cursor: pointer;
+        }
+    }
+}

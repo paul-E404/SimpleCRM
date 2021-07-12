@@ -1,6 +1,7 @@
 :root {
     --padding-main: 16px;
     --offset-main: 56px;
+    --color-hover: rgba(0, 0, 0, 0.05);
 }
 
 html, body { height: 100%; }
@@ -12,6 +13,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mr-16 {
     margin-right: 16px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
 }
 
 .full-width {

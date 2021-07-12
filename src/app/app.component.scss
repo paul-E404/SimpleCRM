@@ -9,6 +9,11 @@
     padding-right: var(--padding-main);
     display: flex;
     align-items: center;
+
+    img {
+        max-height: 90%;
+        max-width: 100%;
+    }
 }
 
 .menu-items {
@@ -29,7 +34,7 @@
         }
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: var(--color-hover);
         }
     }
 }
@@ -37,4 +42,5 @@
 .router-container {
     padding-top: var(--padding-main);
     padding-left: var(--offset-main);
+    padding-right: var(--offset-main);
 }

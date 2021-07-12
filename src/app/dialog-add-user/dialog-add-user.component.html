@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Add a new user</h1>
 <div mat-dialog-content>
 
-    <div>
+    <div class="mb-8">
         <mat-form-field appearance="outline" class="mr-16">
             <mat-label>First name</mat-label>
             <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Your first name">
@@ -15,20 +15,29 @@
         </mat-form-field>
     </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Date of birth</mat-label>
-        <input matInput [disabled]="loading" [(ngModel)]="dateOfBirth" [matDatepicker]="datepicker" placeholder="Your date of birth">
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-            <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Cancel</button>
-                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-            </mat-datepicker-actions>
-        </mat-datepicker>
-        <mat-hint>Choose a date</mat-hint>
+    <mat-form-field appearance="outline" class="full-width mb-8">
+        <mat-label>Email</mat-label>
+        <input type="email" [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Your email">
+        <mat-hint>Enter your email</mat-hint>
     </mat-form-field>
 
-    <div>
+    <div class="full-width mb-8">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Date of birth</mat-label>
+            <input matInput [disabled]="loading" [(ngModel)]="dateOfBirth" [matDatepicker]="datepicker"
+                placeholder="Your date of birth">
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+            </mat-datepicker>
+            <mat-hint>Choose a date</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <div class="mb-8">
         <mat-form-field appearance="outline" class="mr-16">
             <mat-label>Street</mat-label>
             <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Your street">
@@ -42,10 +51,11 @@
         </mat-form-field>
     </div>
 
-    <div>
+    <div class="mb-8">
         <mat-form-field appearance="outline" class="mr-16">
             <mat-label>Zip code</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Your zip code" type="number" min=0>
+            <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Your zip code" type="number"
+                min=0>
             <mat-hint>Enter your zip code</mat-hint>
         </mat-form-field>
 
@@ -57,6 +67,7 @@
     </div>
 
 </div>
+
 <div mat-dialog-actions>
     <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
     <button *ngIf="!loading" mat-button cdkFocusInitial (click)="saveUser()">Save</button>

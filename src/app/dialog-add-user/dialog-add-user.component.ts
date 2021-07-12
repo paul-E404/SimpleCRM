@@ -35,6 +35,7 @@ export class DialogAddUserComponent implements OnInit {
       .add(Object.assign({}, this.user))    
       .then((result: any) => {
         this.loading = false;
+        this.onNoClick();
         console.log("The result after adding to firestore is: ", result);
       })
   }
