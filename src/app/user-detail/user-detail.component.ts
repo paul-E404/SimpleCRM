@@ -40,4 +40,12 @@ export class UserDetailComponent implements OnInit {
       })
   }
 
+  editUserHeader() {
+    console.log("editUserHeader() ausgeführt");
+  }
+
+  editUserAddress() {
+    console.log("editUserAddress() ausgeführt");
+  }
+
 }

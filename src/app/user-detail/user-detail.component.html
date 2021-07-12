@@ -1,19 +1,38 @@
 <mat-card class="user-detail-header">
+
     <img src="../assets/img/profile1.jpg" alt="profile-picture" class="mr-16">
     <div class="user-name-address">
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
         <span>{{ user.email }}</span>
     </div>
+
     <div class="circle circle-xxl"></div>
     <div class="circle circle-big"></div>
     <div class="circle circle-medium"></div>
     <div class="circle circle-small"></div>
+
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" class="three-dots-btn">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editUserHeader()">Edit User</button>
+        <button mat-menu-item>Delete User</button>
+    </mat-menu>
+
 </mat-card>
 
 <mat-card>
+
     <mat-card-title>Address</mat-card-title>
     <mat-card-subtitle>
         {{ user.street }} {{ user.houseNumber }} <br>
         {{ user.zipCode }} {{ user.city }}
     </mat-card-subtitle>
+
+    <button mat-icon-button [matMenuTriggerFor]="addressMenu" class="three-dots-btn">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #addressMenu="matMenu">
+        <button mat-menu-item (click)="editUserAddress()">Edit User Address</button>
+    </mat-menu>
 </mat-card>

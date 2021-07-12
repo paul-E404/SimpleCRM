@@ -44,24 +44,30 @@
 .circle-big {
     height: 100px;
     width: 100px;
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: 40px;
 }
 
 .circle-medium {
     height: 60px;
     width: 60px;
-    top: 20px;
-    right: 140px;
+    top: 30px;
+    right: 160px;
 }
 
 .circle-small {
     height: 30px;
     width: 30px;
-    top: 20px;
-    right: 225px;
+    top: 30px;
+    right: 245px;
 }
 
 .mat-card-title {
     font-size: 20px;
+}
+
+.three-dots-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
 }
