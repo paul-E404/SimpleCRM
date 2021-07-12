@@ -1,0 +1,19 @@
+<mat-card class="user-detail-header">
+    <img src="../assets/img/profile1.jpg" alt="profile-picture" class="mr-16">
+    <div class="user-name-address">
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+        <span>{{ user.email }}</span>
+    </div>
+    <div class="circle circle-xxl"></div>
+    <div class="circle circle-big"></div>
+    <div class="circle circle-medium"></div>
+    <div class="circle circle-small"></div>
+</mat-card>
+
+<mat-card>
+    <mat-card-title>Address</mat-card-title>
+    <mat-card-subtitle>
+        {{ user.street }} {{ user.houseNumber }} <br>
+        {{ user.zipCode }} {{ user.city }}
+    </mat-card-subtitle>
+</mat-card>

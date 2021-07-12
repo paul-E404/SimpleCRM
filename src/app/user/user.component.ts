@@ -32,9 +32,10 @@ export class UserComponent implements OnInit {
   showUserList() {
     this.firestore
       .collection('users')
-      .valueChanges()
+      .valueChanges({idField: 'userId'})
       .subscribe((userData: any) => {
         this.allUsers = userData;
+        console.log("userData", userData);
       })
   }
 

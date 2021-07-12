@@ -1,0 +1,67 @@
+.user-detail-header {
+    height: 300px;
+    background-color: rgb(228, 26, 144);
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    overflow: hidden;
+
+    img {
+        height: 50%;
+        border-radius: 50%;
+        z-index: 2;
+    }
+}
+
+.user-name-address {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+
+    h2 {
+        margin-bottom: 0;
+    }
+}
+
+.circle {
+    background-color: rgb(231, 123, 186);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.circle-xxl {
+    background-color: rgb(255, 210, 236) !important;
+    height: 500px;
+    width: 500px;
+    top: -80px;
+    left: -80px;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.circle-big {
+    height: 100px;
+    width: 100px;
+    top: 20px;
+    right: 20px;
+}
+
+.circle-medium {
+    height: 60px;
+    width: 60px;
+    top: 20px;
+    right: 140px;
+}
+
+.circle-small {
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    right: 225px;
+}
+
+.mat-card-title {
+    font-size: 20px;
+}

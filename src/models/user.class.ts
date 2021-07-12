@@ -1,15 +1,28 @@
-//Das Fragezeichen bedeutet, dass bei Instanziierung des Objekts vom Typ User die 7 Parameter optional übergeben werden können. (Kurzschreibweise)
+//Das Fragezeichen hinter obj bedeutet, dass bei Instanziierung eines Objectes vom Typ User optional ein JSON-Object reingegeben werden kann.
+//Von diesem reingegebenen Objekt können dann die gesetzten Parameter (Key-Value Paare) verwendet werden.
 
 export class User {
 
-    constructor(
-        public firstName?: string,
-        public lastName?: string,
-        public email?: string,
-        public dateOfBirth?: number,
-        public street?: string,
-        public houseNumber?: string,
-        public zipCode?: number,
-        public city?: string
-    ) {}
+    firstName: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: number;
+    street: string;
+    houseNumber: string;
+    zipCode: number;
+    city: string;
+
+      constructor(obj? : any) {
+          //Wenn ein obj reingegeben wurde, d.h. es existiert, dann wird der firstName von diesem obj verwendet. Ansonsten wird ein leerer String gesetzt.
+          // ? : ist die Kurzschreibweise für if-else
+          this.firstName = obj ? obj.firstName : '';
+          this.lastName = obj ? obj.lastName : '';
+          this.email = obj ? obj.email : '';
+          this.dateOfBirth = obj ? obj.dateOfBirth : 0;
+          this.street = obj ? obj.street : '';
+          this.houseNumber = obj ? obj.houseNumber : '';
+          this.zipCode = obj ? obj.zipCode : 0;
+          this.city = obj ? obj.city : '';
+
+      }
 }
