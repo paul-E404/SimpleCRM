@@ -18,10 +18,10 @@ export class User {
           this.firstName = obj ? obj.firstName : '';
           this.lastName = obj ? obj.lastName : '';
           this.email = obj ? obj.email : '';
-          this.dateOfBirth = obj ? obj.dateOfBirth : 0;
+          this.dateOfBirth = obj ? obj.dateOfBirth : '';
           this.street = obj ? obj.street : '';
           this.houseNumber = obj ? obj.houseNumber : '';
-          this.zipCode = obj ? obj.zipCode : 0;
+          this.zipCode = obj ? obj.zipCode : '';
           this.city = obj ? obj.city : '';
 
       }

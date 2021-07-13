@@ -4,6 +4,7 @@
     <div class="user-name-address">
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
         <span>{{ user.email }}</span>
+        <span>born {{ user.dateOfBirth | date: 'd MMM yyyy'}} </span>
     </div>
 
     <div class="circle circle-xxl"></div>
@@ -15,7 +16,7 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="editUserHeader()">Edit User</button>
+        <button mat-menu-item (click)="openEditUserHeader()">Edit User</button>
         <button mat-menu-item>Delete User</button>
     </mat-menu>
 
@@ -33,6 +34,6 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #addressMenu="matMenu">
-        <button mat-menu-item (click)="editUserAddress()">Edit User Address</button>
+        <button mat-menu-item (click)="openEditUserAddress()">Edit User Address</button>
     </mat-menu>
 </mat-card>

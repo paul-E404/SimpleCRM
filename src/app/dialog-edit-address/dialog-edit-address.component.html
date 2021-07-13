@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Edit address</h1>
+<div mat-dialog-content>
+
+    <div class="mb-8">
+        <mat-form-field appearance="outline" class="mr-16">
+            <mat-label>Street</mat-label>
+            <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Your street">
+            <mat-hint>Enter your street name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>House Number</mat-label>
+            <input [disabled]="loading" [(ngModel)]="user.houseNumber" matInput placeholder="Your house number">
+            <mat-hint>Enter your house number</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <div class="mb-8">
+        <mat-form-field appearance="outline" class="mr-16">
+            <mat-label>Zip code</mat-label>
+            <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Your zip code" type="number"
+                min=0>
+            <mat-hint>Enter your zip code</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Your city">
+            <mat-hint>Enter your city</mat-hint>
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div mat-dialog-actions>
+    <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
+    <button *ngIf="!loading" mat-button cdkFocusInitial (click)="editUserAddress()">Save</button>
+    <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+</div>

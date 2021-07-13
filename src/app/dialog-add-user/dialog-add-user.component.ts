@@ -32,11 +32,13 @@ export class DialogAddUserComponent implements OnInit {
       .collection('users')
       //Umwandlung in ein JSON-Object um das Object vom Typ User im Firestore speichern zu können.
       //Source: https://stackoverflow.com/questions/48156234/function-documentreference-set-called-with-invalid-data-unsupported-field-val
-      .add(Object.assign({}, this.user))    
+      .add(Object.assign({}, this.user))
       .then((result: any) => {
-        this.loading = false;
-        this.onNoClick();
-        console.log("The result after adding to firestore is: ", result);
+        setTimeout(() => {
+          this.onNoClick();
+          this.loading = false;
+          console.log("The result after adding to firestore is: ", result);
+        }, 1000)
       })
   }
 
