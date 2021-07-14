@@ -5,20 +5,20 @@
         <mat-form-field appearance="outline" class="mr-16">
             <mat-label>First name</mat-label>
             <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Your first name">
-            <mat-hint>Enter your first name</mat-hint>
+            <mat-hint>Change your first name</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Last name</mat-label>
             <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Your last name">
-            <mat-hint>Enter your last name</mat-hint>
+            <mat-hint>Change your last name</mat-hint>
         </mat-form-field>
     </div>
 
     <mat-form-field appearance="outline" class="full-width mb-8">
         <mat-label>Email</mat-label>
         <input type="email" [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Your email">
-        <mat-hint>Enter your email</mat-hint>
+        <mat-hint>Change your email</mat-hint>
     </mat-form-field>
 
     <div class="full-width mb-8">

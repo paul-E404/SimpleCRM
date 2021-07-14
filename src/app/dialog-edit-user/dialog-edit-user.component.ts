@@ -26,17 +26,17 @@ export class DialogEditUserComponent implements OnInit {
 
   editUserHeader() {
     this.loading = true;
-    this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
-      .then(() => {
-        setTimeout(() => {
+    //setTimeout is only for demonstration purpuses of mat spinner
+    setTimeout(() => {
+      this.firestore
+        .collection('users')
+        .doc(this.userId)
+        .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
+        .then(() => {
           this.onNoClick();
           this.loading = false;
-        }, 1000)
-        
-      })
+        })
+    }, 1000)
   }
 
 }

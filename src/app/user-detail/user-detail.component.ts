@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
+import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
@@ -40,7 +41,7 @@ export class UserDetailComponent implements OnInit {
         //Das JSON-Object, welches wir bekommen wird direkt in ein Object vom Typ User (diese Klasse haben wir selbst definiert) umgewandelt.
         //Siehe Klasse user.class.ts => Der übergebene obj Parameter ist hier user.
         this.user = new User(user);
-       
+
         console.log("Retrieved user: ", this.user);
       })
   }
@@ -59,4 +60,11 @@ export class UserDetailComponent implements OnInit {
     dialog.componentInstance.user = new User(Object.assign({}, this.user));
     dialog.componentInstance.userId = this.userId;
   }
+
+  openDeleteUser() {
+    const dialog = this.dialog.open(DialogDeleteUserComponent);
+    dialog.componentInstance.user = new User(Object.assign({}, this.user));
+    dialog.componentInstance.userId = this.userId;
+  }
+
 }

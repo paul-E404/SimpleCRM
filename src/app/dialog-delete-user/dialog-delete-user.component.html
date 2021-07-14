@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>Are you sure you want to delete {{ user.firstName }} {{ user.lastName }}?</h1>
+<div mat-dialog-actions>
+    <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
+    <button *ngIf="!loading" mat-button cdkFocusInitial (click)="deleteUser()">Delete</button>
+    <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+</div>

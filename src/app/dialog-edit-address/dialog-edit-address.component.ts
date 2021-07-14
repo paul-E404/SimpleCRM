@@ -25,16 +25,16 @@ export class DialogEditAddressComponent implements OnInit {
 
   editUserAddress() {
     this.loading = true;
-    this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
-      .then(() => {
-        setTimeout(() => {
+    setTimeout(() => {
+      this.firestore
+        .collection('users')
+        .doc(this.userId)
+        .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
+        .then(() => {
           this.onNoClick();
           this.loading = false;
-        }, 2000)
-      })
+        })
+    }, 2000)
   }
 
 }
