@@ -5,30 +5,31 @@
         <div class="mb-8">
             <mat-form-field appearance="outline" class="mr-16">
                 <mat-label>First name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.firstName" name="firstName" matInput placeholder="Your first name"
-                    required>
+                <input [disabled]="loading" [(ngModel)]="user.firstName" name="firstName" matInput
+                    placeholder="Your first name" required>
                 <mat-hint>Enter your first name</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.lastName" name="lastName" matInput placeholder="Your last name" required>
+                <input [disabled]="loading" [(ngModel)]="user.lastName" name="lastName" matInput
+                    placeholder="Your last name" required>
                 <mat-hint>Enter your last name</mat-hint>
             </mat-form-field>
         </div>
 
         <mat-form-field appearance="outline" class="full-width mb-8">
             <mat-label>Email</mat-label>
-            <input type="email" [disabled]="loading" [(ngModel)]="user.email" name="email" matInput placeholder="Your email"
-                required>
+            <input type="email" [disabled]="loading" [(ngModel)]="user.email" name="email" matInput
+                placeholder="Your email" required>
             <mat-hint>Enter your email</mat-hint>
         </mat-form-field>
 
         <div class="full-width mb-8">
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Date of birth</mat-label>
-                <input matInput [disabled]="loading" [(ngModel)]="dateOfBirth" name="dateOfBirth" [matDatepicker]="datepicker"
-                    placeholder="Your date of birth">
+                <input matInput [disabled]="loading" [(ngModel)]="dateOfBirth" name="dateOfBirth"
+                    [matDatepicker]="datepicker" placeholder="Your date of birth">
                 <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker>
                     <mat-datepicker-actions>
@@ -43,14 +44,15 @@
         <div class="mb-8">
             <mat-form-field appearance="outline" class="mr-16">
                 <mat-label>Street</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.street" name="street" matInput placeholder="Your street" required>
+                <input [disabled]="loading" [(ngModel)]="user.street" name="street" matInput placeholder="Your street"
+                    required>
                 <mat-hint>Enter your street name</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>House Number</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.houseNumber" name="houseNumber" matInput placeholder="Your house number"
-                    required>
+                <input [disabled]="loading" [(ngModel)]="user.houseNumber" name="houseNumber" matInput
+                    placeholder="Your house number" required>
                 <mat-hint>Enter your house number</mat-hint>
             </mat-form-field>
         </div>
@@ -58,17 +60,21 @@
         <div class="mb-8">
             <mat-form-field appearance="outline" class="mr-16">
                 <mat-label>Zip code</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" matInput placeholder="Your zip code"
-                    type="number" min=0 required>
+                <input [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" matInput
+                    placeholder="Your zip code" type="number" min=0 required>
                 <mat-hint>Enter your zip code</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>City</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.city" name="city" matInput placeholder="Your city" required>
+                <input [disabled]="loading" [(ngModel)]="user.city" name="city" matInput placeholder="Your city"
+                    required>
                 <mat-hint>Enter your city</mat-hint>
             </mat-form-field>
         </div>
+
+        <h2 mat-dialog-title>Upload optionally a profile picture</h2>
+        <!-- <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" placeholder="Upload a profile picture"/> -->
 
     </div>
 

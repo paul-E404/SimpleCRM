@@ -42,4 +42,8 @@ export class DialogAddUserComponent implements OnInit {
       })
   }
 
+ /*  onFileSelected(event: any) {
+
+  } */
+
 }

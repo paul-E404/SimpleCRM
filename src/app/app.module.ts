@@ -28,6 +28,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-user.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-us
     AngularFirestoreModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
