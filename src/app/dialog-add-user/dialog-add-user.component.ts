@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
+import { FileUploadService } from '../services/file-upload.service';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -14,7 +15,7 @@ export class DialogAddUserComponent implements OnInit {
   dateOfBirth: Date = new Date;
   loading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: AngularFirestore) { }
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: AngularFirestore, public fileUpload: FileUploadService) { }
 
   ngOnInit(): void {
   }
@@ -41,9 +42,5 @@ export class DialogAddUserComponent implements OnInit {
         }, 1000)
       })
   }
-
- /*  onFileSelected(event: any) {
-
-  } */
 
 }

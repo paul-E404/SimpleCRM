@@ -74,7 +74,8 @@
         </div>
 
         <h2 mat-dialog-title>Upload optionally a profile picture</h2>
-        <!-- <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" placeholder="Upload a profile picture"/> -->
+        <input type="file" (change)="fileUpload.uploadFile($event)" name="image" autocomplete="off" placeholder="Upload a profile picture"/>
+        <!-- <input type="file" id="file" #userPhoto (change)="fileUpload.upload()" name="image" autocomplete="off" placeholder="Upload a profile picture"/> -->
 
     </div>
 
