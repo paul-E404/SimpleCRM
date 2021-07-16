@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -6,22 +6,36 @@ import { User } from 'src/models/user.class';
 import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { FilePreviewService } from '../services/file-preview.service';
+import { FileUploadService } from '../services/file-upload.service';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit, OnChanges {
 
   userId: string = '';
   user: User = new User();
   dateOfBirth: number;
+  profileImagePath: string = '';
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    public dialog: MatDialog,
+    public fileUpload: FileUploadService,
+    public filePreview: FilePreviewService) { }
 
   ngOnInit(): void {
     this.getUserId();
+    this.getUser();
+    this.filePreview.previewFile(this.fileUpload.filePath, this.user.userId);
+    console.log("Der Filepath lautet: ", this.fileUpload.filePath);
+  }
+
+  ngOnChanges(): void {
     this.getUser();
   }
 
@@ -36,7 +50,7 @@ export class UserDetailComponent implements OnInit {
     this.firestore
       .collection('users')
       .doc(this.userId)
-      .valueChanges()
+      .valueChanges({idField: 'userId'})
       .subscribe((user: any) => {
         //Das JSON-Object, welches wir bekommen wird direkt in ein Object vom Typ User (diese Klasse haben wir selbst definiert) umgewandelt.
         //Siehe Klasse user.class.ts => Der übergebene obj Parameter ist hier user.
@@ -65,6 +79,21 @@ export class UserDetailComponent implements OnInit {
     const dialog = this.dialog.open(DialogDeleteUserComponent);
     dialog.componentInstance.user = new User(Object.assign({}, this.user));
     dialog.componentInstance.userId = this.userId;
+  }
+
+  async onUploadFile(event: any, userId: string) {
+    this.profileImagePath = await this.fileUpload.uploadFile(event, userId);
+    console.log("profileImagePath", this.profileImagePath);
+    this.user.profileImagePath = this.profileImagePath;
+    this.updateUser();
+    console.log("Nutzer", this.user);
+  }
+
+  updateUser() {
+    this.firestore
+    .collection('users')
+    .doc(this.userId)
+    .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
   }
 
 }

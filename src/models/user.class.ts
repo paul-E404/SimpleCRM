@@ -11,6 +11,8 @@ export class User {
     houseNumber: string;
     zipCode: number;
     city: string;
+    userId: string;
+    profileImagePath: string;
 
       constructor(obj? : any) {
           //Wenn ein obj reingegeben wurde, d.h. es existiert, dann wird der firstName von diesem obj verwendet. Ansonsten wird ein leerer String gesetzt.
@@ -23,6 +25,8 @@ export class User {
           this.houseNumber = obj ? obj.houseNumber : '';
           this.zipCode = obj ? obj.zipCode : '';
           this.city = obj ? obj.city : '';
+          this.userId = obj ? obj.userId : '';
+          this.profileImagePath = obj ? obj.profileImagePath : '';
 
       }
 }

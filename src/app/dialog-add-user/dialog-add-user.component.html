@@ -1,4 +1,4 @@
-<form (ngSubmit)="saveUser()" ngNativeValidate>
+<form (ngSubmit)="saveUser(); " ngNativeValidate>
     <h1 mat-dialog-title>Add a new user</h1>
     <div mat-dialog-content>
 
@@ -72,10 +72,6 @@
                 <mat-hint>Enter your city</mat-hint>
             </mat-form-field>
         </div>
-
-        <h2 mat-dialog-title>Upload optionally a profile picture</h2>
-        <input type="file" (change)="fileUpload.uploadFile($event)" name="image" autocomplete="off" placeholder="Upload a profile picture"/>
-        <!-- <input type="file" id="file" #userPhoto (change)="fileUpload.upload()" name="image" autocomplete="off" placeholder="Upload a profile picture"/> -->
 
     </div>
 
