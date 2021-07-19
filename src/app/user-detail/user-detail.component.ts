@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
@@ -19,7 +20,10 @@ export class UserDetailComponent implements OnInit, OnChanges {
   userId: string = '';
   user: User = new User();
   dateOfBirth: number;
-  profileImagePath: string = '';
+  profileImageURL: any = '';
+
+  url = new Subject<string>();
+  url$ = this.url.asObservable();
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +37,10 @@ export class UserDetailComponent implements OnInit, OnChanges {
     this.getUser();
     this.filePreview.previewFile(this.fileUpload.filePath, this.user.userId);
     console.log("Der Filepath lautet: ", this.fileUpload.filePath);
+
+    this.url.subscribe(async (url) => {
+      console.log("New URL", url);
+    })
   }
 
   ngOnChanges(): void {
@@ -82,18 +90,11 @@ export class UserDetailComponent implements OnInit, OnChanges {
   }
 
   async onUploadFile(event: any, userId: string) {
-    this.profileImagePath = await this.fileUpload.uploadFile(event, userId);
-    console.log("profileImagePath", this.profileImagePath);
-    this.user.profileImagePath = this.profileImagePath;
+    this.fileUpload.uploadFile(event, userId);
+    /* console.log("profileImageURL", this.profileImageURL);
+    this.user.profileImageURL = this.profileImageURL;
     this.updateUser();
-    console.log("Nutzer", this.user);
-  }
-
-  updateUser() {
-    this.firestore
-    .collection('users')
-    .doc(this.userId)
-    .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
-  }
+    console.log("Nutzer", this.user); */
+  };
 
 }
