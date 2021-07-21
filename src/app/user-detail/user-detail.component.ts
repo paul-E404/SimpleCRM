@@ -7,7 +7,6 @@ import { User } from 'src/models/user.class';
 import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
-import { FilePreviewService } from '../services/file-preview.service';
 import { FileUploadService } from '../services/file-upload.service';
 
 @Component({
@@ -15,12 +14,12 @@ import { FileUploadService } from '../services/file-upload.service';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit, OnChanges {
+export class UserDetailComponent implements OnInit {
 
   userId: string = '';
   user: User = new User();
   dateOfBirth: number;
-  profileImageURL: any = '';
+  profileImageURL: string = '';
 
   url = new Subject<string>();
   url$ = this.url.asObservable();
@@ -29,22 +28,19 @@ export class UserDetailComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
     public dialog: MatDialog,
-    public fileUpload: FileUploadService,
-    public filePreview: FilePreviewService) { }
+    public fileUpload: FileUploadService) { }
 
   ngOnInit(): void {
+
     this.getUserId();
     this.getUser();
-    this.filePreview.previewFile(this.fileUpload.filePath, this.user.userId);
-    console.log("Der Filepath lautet: ", this.fileUpload.filePath);
 
+    this.fileUpload.url = this.url;
     this.url.subscribe(async (url) => {
       console.log("New URL", url);
-    })
-  }
-
-  ngOnChanges(): void {
-    this.getUser();
+      this.user.profileImageURL = url;
+      this.updateUser();
+    });
   }
 
   getUserId() {
@@ -63,7 +59,6 @@ export class UserDetailComponent implements OnInit, OnChanges {
         //Das JSON-Object, welches wir bekommen wird direkt in ein Object vom Typ User (diese Klasse haben wir selbst definiert) umgewandelt.
         //Siehe Klasse user.class.ts => Der übergebene obj Parameter ist hier user.
         this.user = new User(user);
-
         console.log("Retrieved user: ", this.user);
       })
   }
@@ -89,12 +84,15 @@ export class UserDetailComponent implements OnInit, OnChanges {
     dialog.componentInstance.userId = this.userId;
   }
 
-  async onUploadFile(event: any, userId: string) {
+  onUploadFile(event: any, userId: string) {
     this.fileUpload.uploadFile(event, userId);
-    /* console.log("profileImageURL", this.profileImageURL);
-    this.user.profileImageURL = this.profileImageURL;
-    this.updateUser();
-    console.log("Nutzer", this.user); */
   };
+
+  updateUser() {
+    this.firestore
+    .collection('users')
+    .doc(this.userId)
+    .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
+  }
 
 }

@@ -1,7 +1,11 @@
 <mat-card class="user-detail-header">
 
-    <img *ngIf="!fileUpload.fileUploaded" src="../assets/img/default-profile.png" alt="profile-picture" class="mr-16">
-    <img *ngIf="fileUpload.fileUploaded" [src]="fileUpload.filePath | getDownloadURL" alt="profile-picture" class="mr-16">
+    <!-- Profile image upload -->
+    <input hidden #uploader id="profileImage" type="file" accept="image/png, image/gif, image/jpeg"
+        (change)="onUploadFile($event, userId)" name="image" autocomplete="off"
+        placeholder="Upload a profile picture" /><br>
+    <img title="Change profile picture" (click)="uploader.click()" [src]="user.profileImageURL" alt="profile-picture" class="mr-16">
+
     <div class="user-name-address">
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
         <span>{{ user.email }}</span>
@@ -38,8 +42,3 @@
         <button mat-menu-item (click)="openEditUserAddress()">Edit User Address</button>
     </mat-menu>
 </mat-card>
-
-<h2 mat-dialog-title>Upload optionally a profile picture</h2>
-<input type="file" (change)="onUploadFile($event, userId)" name="image" autocomplete="off"
-    placeholder="Upload a profile picture" /><br>
-<img *ngIf="fileUpload.fileUploaded" [src]="fileUpload.filePath | getDownloadURL" class="preview-profile-image" />
