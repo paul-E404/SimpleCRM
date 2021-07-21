@@ -26,6 +26,8 @@ export class DialogEditUserComponent implements OnInit {
 
   editUserHeader() {
     this.loading = true;
+    this.user.dateOfBirth = this.dateOfBirth.getTime();
+    
     //setTimeout is only for demonstration purpuses of mat spinner
     setTimeout(() => {
       this.firestore
