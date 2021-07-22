@@ -12,8 +12,8 @@ mat-card {
 table {
     border-collapse: collapse;
 
-    th {
-        text-align: start;
+    mat-sort-header-content {
+        text-align: left !important;
     }
 
     td {
@@ -40,3 +40,4 @@ table {
         }
     }
 }
+

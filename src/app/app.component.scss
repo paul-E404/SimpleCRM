@@ -44,3 +44,13 @@
     padding-left: var(--offset-main);
     padding-right: var(--offset-main);
 }
+
+@media (max-width: 500px) {
+    .router-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .sidenav {
+        width: 240px;
+    }
+}

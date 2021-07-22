@@ -22,3 +22,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width {
     width: 100%;
 }
+
+@media(max-width: 600px) {
+    .cdk-overlay-pane {
+        max-width: 100% !important;
+    }
+}

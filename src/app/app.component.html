@@ -1,5 +1,5 @@
-<mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
+<mat-sidenav-container class="mat-drawer-container" autosize>
+  <mat-sidenav #sidenav class="sidenav" mode="side">
     <div class="logo-container">
       <img src="../assets/img/logo_simple_crm.png" alt="logo_simple_crm">
     </div>
@@ -11,14 +11,14 @@
         <mat-icon>person_outline</mat-icon>User
       </li>
     </ul>
-  </mat-drawer>
+  </mat-sidenav>
 
   <div class="example-sidenav-content">
 
     <mat-toolbar color="primary">
-      <button (click)="drawer.toggle();menuOpened = !menuOpened" mat-icon-button>
-        <mat-icon *ngIf="!menuOpened">menu</mat-icon>
-        <mat-icon *ngIf="menuOpened">menu_open</mat-icon>
+      <button (click)="sidenav.toggle()" mat-icon-button>
+        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">menu_open</mat-icon>
       </button>
       <span>Simple CRM</span>
       <span class="example-spacer"></span>
@@ -30,4 +30,4 @@
 
   </div>
 
-</mat-drawer-container>
+</mat-sidenav-container>

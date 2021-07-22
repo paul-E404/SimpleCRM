@@ -75,3 +75,37 @@
     top: 4px;
     right: 4px;
 }
+
+@media (max-width: 500px) {
+    .user-detail-header {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .user-name-address {
+        height: unset;
+    }
+    .circle-xxl {
+        left: -160px;
+    }
+    .circle-big {
+        height: 50px;
+        width: 50px;
+    }
+    .circle-medium {
+        height: 30px;
+        width: 30px;
+        right: 100px;
+    }
+    .circle-small {
+        height: 15px;
+        width: 15px;
+        right: 150px;
+    }
+}
+
+@media(max-width: 400px) {
+    .circle-xxl {
+        left: -250px;
+    }
+}
