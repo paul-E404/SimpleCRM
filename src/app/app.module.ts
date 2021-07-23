@@ -63,7 +63,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     MatCardModule,
     MatMenuModule,
     MatSortModule,
-    AngularFireStorageModule 
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

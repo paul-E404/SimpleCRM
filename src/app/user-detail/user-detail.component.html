@@ -4,7 +4,8 @@
     <input hidden #uploader id="profileImage" type="file" accept="image/png, image/gif, image/jpeg"
         (change)="onUploadFile($event, userId)" name="image" autocomplete="off"
         placeholder="Upload a profile picture" /><br>
-    <img title="Change profile picture" (click)="uploader.click()" [src]="user.profileImageURL" alt="profile-picture" class="mr-16">
+    <img title="Change profile picture" (click)="uploader.click()" [src]="user.profileImageURL" alt="profile-picture"
+        class="mr-16">
 
     <div class="user-name-address">
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>

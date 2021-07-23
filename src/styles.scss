@@ -4,8 +4,14 @@
     --color-hover: rgba(0, 0, 0, 0.05);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-drawer-container {
     height: 100vh;
@@ -23,13 +29,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 100%;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     .cdk-overlay-pane {
         max-width: 100% !important;
     }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
     mat-form-field {
         width: 100%;
     }

@@ -20,20 +20,27 @@ export class DialogEditUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Closes the dialog.
+   * @returns void
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  /**
+   * Saves changed user data to Angular Firestore.
+   */
   editUserHeader() {
     this.loading = true;
     this.user.dateOfBirth = this.dateOfBirth.getTime();
-    
     //setTimeout is only for demonstration purpuses of mat spinner
     setTimeout(() => {
       this.firestore
         .collection('users')
         .doc(this.userId)
-        .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
+        //Transform User object into JSON for being able to update JSON in Angular Firestore.
+        .update(Object.assign({}, this.user))
         .then(() => {
           this.onNoClick();
           this.loading = false;

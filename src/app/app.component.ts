@@ -21,8 +21,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   //source: https://zoaibkhan.com/blog/create-a-responsive-sidebar-menu-with-angular-material/
+
+  /**
+   * Listens to screenwidth for managing responsive sidenavbar overlapping over content container.
+   */
   ngAfterViewInit() {
-    
+
     setTimeout(() => {
       this.observer.observe(['(max-width: 1000px)']).subscribe((result) => {
         if (result.matches) {
@@ -37,6 +41,9 @@ export class AppComponent implements AfterViewInit {
 
   }
 
+  /**
+   * Closes sidenavbar.
+   */
   closeSidenav() {
     this.sidenav.close();
   }

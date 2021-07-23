@@ -15,29 +15,40 @@ export class UserComponent implements OnInit {
   allUsers: any;
   sortedData: any[];
 
-  constructor(public dialog: MatDialog, private firestore: AngularFirestore) {
-
-  }
+  constructor(
+    public dialog: MatDialog,
+    private firestore: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
     this.showUserList();
   }
 
+  /**
+   * Opens dialog for creating a new user.
+   * @returns void
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent);
   }
 
+  /**
+   * Shows a table with all created users.
+   */
   showUserList() {
     this.firestore
       .collection('users')
       .valueChanges({ idField: 'userId' })
       .subscribe((userData: any) => {
         this.allUsers = userData;
-        console.log("Alle Nutzer Daten: ", this.allUsers);
       })
   }
 
   //Source: https://material.angular.io/components/sort/overview
+  /**
+   * Sorts table with user data alphabetically.
+   * @param  {Sort} sort
+   */
   sortData(sort: Sort) {
     this.sortedData = this.allUsers.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
@@ -50,4 +61,5 @@ export class UserComponent implements OnInit {
       }
     });
   }
+
 }

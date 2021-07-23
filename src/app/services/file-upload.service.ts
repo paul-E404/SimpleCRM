@@ -10,27 +10,34 @@ export class FileUploadService {
 
   fileName: string;
   filePath: string;
-  //fileUploaded: boolean = false;
   url: Subject<string>;
 
   constructor(private storage: AngularFireStorage) { }
 
-  async uploadFile(event: any, userId: string) {
+  //Source: https://github.com/angular/angularfire/blob/master/docs/storage/storage.md => upload
 
+  /**
+   * Uploads a file (specificly a user profile picture) to Angular Firestorage.
+   * @param  {any} event Change event for uploading a file.
+   * @param  {string} userId The user's id.
+   */
+  async uploadFile(event: any, userId: string) {
+    
+    //Create filepath
     const file = event.target.files[0];
     this.fileName = file.name;
     this.filePath = 'profilePictures/' + userId + '/' + this.fileName;
+
+    //Upload file to AngularFire Storage
     const fileRef = this.storage.ref(this.filePath);
     const task = await this.storage.upload(this.filePath, file);
-    console.log("FILE HOCHGELADEN!");
-
-    //this.fileUploaded = true;
+    
+    //Subscribe file url
     fileRef.getDownloadURL().subscribe((url) => {
-      console.log("The fileURL is: ", url, "mit dem Typ: ", typeof(url));
-      this.url.next(url); //url ist der Observer; er informiert über neue Daten (also über eine neue url).
+      //console.log("The fileURL is: ", url, "with type: ", typeof(url));
+      //this.url is the observer here. It informs about new data (specificly about a new url).
+      this.url.next(url);
     });
   }
-
-//Quelle: https://github.com/angular/angularfire/blob/master/docs/storage/storage.md => Weg: upload
 
 }

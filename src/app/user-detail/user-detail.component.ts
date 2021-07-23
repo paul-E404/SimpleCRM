@@ -28,41 +28,53 @@ export class UserDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
     public dialog: MatDialog,
-    public fileUpload: FileUploadService) { }
+    public fileUpload: FileUploadService
+  ) { }
 
   ngOnInit(): void {
 
     this.getUserId();
     this.getUser();
 
+    //receive URL from uploaded file
     this.fileUpload.url = this.url;
     this.url.subscribe(async (url) => {
       console.log("New URL", url);
+      //save received URL in user object
       this.user.profileImageURL = url;
+      //save new user data to Angular Firestore
       this.updateUser();
     });
   }
 
+  /**
+   * Gets user id from URL.
+   */
   getUserId() {
     this.route.params.subscribe(params => {
       this.userId = params['id'];
-      console.log("user ID from URL: ", this.userId);
     })
   }
 
+  /**
+   * Gets user data from user with a specific id in Angular Firestore.
+   */
   getUser() {
     this.firestore
       .collection('users')
       .doc(this.userId)
-      .valueChanges({idField: 'userId'})
+      .valueChanges({ idField: 'userId' })
       .subscribe((user: any) => {
-        //Das JSON-Object, welches wir bekommen wird direkt in ein Object vom Typ User (diese Klasse haben wir selbst definiert) umgewandelt.
-        //Siehe Klasse user.class.ts => Der übergebene obj Parameter ist hier user.
+        //The received json object is directly transformed into an object of type User (the class which I have created in models > user.class.ts)
+        //See class user.class.ts => The passed parameter is here "user".
         this.user = new User(user);
-        console.log("Retrieved user: ", this.user);
+        //console.log("Retrieved user: ", this.user);
       })
   }
 
+  /**
+   * Opens dialog for editing user data.
+   */
   openEditUserHeader() {
     const dialog = this.dialog.open(DialogEditUserComponent);
     //Kopie von User erstellen. Ansonsten ändern sich die Daten direkt bei Eingabe.
@@ -72,27 +84,42 @@ export class UserDetailComponent implements OnInit {
     dialog.componentInstance.userId = this.userId;
   }
 
+  /**
+   * Opens dialog for editing user address data.
+   */
   openEditUserAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(Object.assign({}, this.user));
     dialog.componentInstance.userId = this.userId;
   }
 
+  /**
+   * Opens dialog with user delete option.
+   */
   openDeleteUser() {
     const dialog = this.dialog.open(DialogDeleteUserComponent);
     dialog.componentInstance.user = new User(Object.assign({}, this.user));
     dialog.componentInstance.userId = this.userId;
   }
 
+  /**
+   * Calls the file-upload-service for uploading a file (specificly a profile image).
+   * @param  {any} event Change event for uploading a file.
+   * @param  {string} userId The user's id.
+   */
   onUploadFile(event: any, userId: string) {
     this.fileUpload.uploadFile(event, userId);
   };
 
+  /**
+   * Saves current user data to Angular Firestore.
+   */
   updateUser() {
     this.firestore
-    .collection('users')
-    .doc(this.userId)
-    .update(Object.assign({}, this.user)) //User Objekt in JSON umwandeln
+      .collection('users')
+      .doc(this.userId)
+      //Transform User object into JSON for being able to save to Angular Firestore.
+      .update(Object.assign({}, this.user))
   }
 
 }
