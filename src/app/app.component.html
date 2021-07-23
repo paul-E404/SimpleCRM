@@ -4,10 +4,10 @@
       <img src="../assets/img/logo_simple_crm.png" alt="logo_simple_crm">
     </div>
     <ul class="menu-items">
-      <li routerLink="/">
+      <li routerLink="/" (click)="closeSidenav()">
         <mat-icon>dashboard</mat-icon>Dashboard
       </li>
-      <li routerLink="/user">
+      <li routerLink="/user" (click)="closeSidenav()">
         <mat-icon>person_outline</mat-icon>User
       </li>
     </ul>
