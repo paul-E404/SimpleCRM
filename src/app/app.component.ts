@@ -12,8 +12,6 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  title = 'simple-crm';
-
   constructor(private observer: BreakpointObserver) { }
 
   ngOnInit() {

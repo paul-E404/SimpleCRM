@@ -10,7 +10,7 @@ import { User } from 'src/models/user.class';
 })
 export class DialogEditAddressComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   loading: boolean = false;
   userId: string;
 

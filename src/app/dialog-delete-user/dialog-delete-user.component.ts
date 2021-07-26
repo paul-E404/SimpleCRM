@@ -12,7 +12,7 @@ import { User } from 'src/models/user.class';
 export class DialogDeleteUserComponent implements OnInit {
 
   loading: boolean = false;
-  user: User;
+  user: User = new User();
   userId: string;
 
   constructor(
